@@ -2,6 +2,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, HTMLResponse # <--- Added HTMLResponse
 import pandas as pd
 import joblib
 import numpy as np
@@ -14,7 +15,12 @@ app = FastAPI(
     title="Discount Optimization Engine",
     description="AI-powered pricing optimization to maximize ROI per user."
 )
-
+# --- SERVE FRONTEND ---
+@app.get("/", response_class=HTMLResponse)
+def read_root():
+    """Serves the HTML Dashboard when you visit the URL"""
+    with open("index.html", "r", encoding="utf-8") as f:
+        return f.read()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
