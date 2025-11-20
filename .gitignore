@@ -1,0 +1,17 @@
+# Ignore Virtual Environment
+venv/
+__pycache__/
+.env
+
+# Ignore IDE settings
+.vscode/
+.idea/
+.ipynb_checkpoints/
+
+# Ignore HUGE Data Files (Github limit is 100MB)
+# We explicitly exclude the big ones but allow the small ones
+data/master_features_v2.csv
+data/coupon_list_train.csv
+data/coupon_visit_train.csv
+*.zip
+*.rar
